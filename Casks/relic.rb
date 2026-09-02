@@ -14,20 +14,23 @@ cask "relic" do
     end
   end
 
+  # Relic checks latest.json and replaces its own bundle in place
+  # (app/lib/data/self_update.dart), so brew is not the only update path.
+  auto_updates true
   # Apple silicon only: app/macos/Runner.xcodeproj sets ARCHS = arm64 on the
   # Release configuration, and build_release_macos.sh bundles the osx-arm64
   # ONNX Runtime dylib that the sift search sidecar loads.
   depends_on arch: :arm64
   # MACOSX_DEPLOYMENT_TARGET = 11.0 in the Release configuration.
-  depends_on macos: ">= :big_sur"
-
-  # Relic checks latest.json and replaces its own bundle in place
-  # (app/lib/data/self_update.dart), so brew is not the only update path.
-  auto_updates true
+  depends_on macos: :big_sur
 
   # build_release_macos.sh renames the build product relic_app.app to Relic.app
   # when it stages the disk image, so this is the name inside the DMG.
   app "Relic.app"
+
+  # Relic lives in the menu bar and keeps running after its window closes, so
+  # quit it before the bundle is moved to the Trash.
+  uninstall quit: "space.relic.mac"
 
   zap trash: [
     # The vault itself: db, blobs, config, prefs, logs. Hardcoded in

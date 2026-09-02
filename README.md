@@ -6,14 +6,17 @@ end-to-end encrypted vault for everything you copy.
 ## Install
 
 ```sh
-brew tap RelicSync/relic
-brew install --cask relic
+brew install --cask RelicSync/relic/relic
 ```
 
-Or in one line:
+Naming the tap in full is enough for Homebrew to load the cask. If you would
+rather tap first and use the short name, Homebrew 6 asks you to trust the tap
+before it will load anything from it:
 
 ```sh
-brew install --cask RelicSync/relic/relic
+brew tap RelicSync/relic
+brew trust RelicSync/relic
+brew install --cask relic
 ```
 
 ## Update
