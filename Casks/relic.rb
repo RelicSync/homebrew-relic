@@ -1,6 +1,6 @@
 cask "relic" do
-  version "1.0.60"
-  sha256 "8ef63e789ad759de2577ec757d98ef1c84cb2a648b5e54e38421b9b7ff05236b"
+  version "1.0.64"
+  sha256 "08a7bdb2a5978f8fdfbba8b5401bcca137711ca96fabce2bd011ed424d45419e"
 
   url "https://relic.space/download/macos/relic-#{version}.dmg"
   name "Relic"
